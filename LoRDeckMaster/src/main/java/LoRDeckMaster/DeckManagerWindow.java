@@ -5,6 +5,7 @@
  */
 package LoRDeckMaster;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Clipboard;
 import java.awt.Toolkit;
@@ -41,7 +42,7 @@ public class DeckManagerWindow extends javax.swing.JFrame {
             
             String deckName, deckCode;
             int i = 0;
-            while ((deckName = br.readLine()) != null && (deckCode = br.readLine()) != null) {
+            while ((deckName = BoundedLineReader.readLine(br, 5_000_000)) != null && (deckCode = BoundedLineReader.readLine(br, 5_000_000)) != null) {
                 dlmDecks.addElement(new Deck(deckCode));
                 dlmDecks.getElementAt(i).setName(deckName);
                 i++;
