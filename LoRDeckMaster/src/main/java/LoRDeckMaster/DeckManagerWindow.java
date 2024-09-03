@@ -13,6 +13,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -284,7 +285,7 @@ public class DeckManagerWindow extends javax.swing.JFrame {
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         // Save user decks by writing deck codes to a file.
         try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter("USER_DECK_CODES.txt"));
+            BufferedWriter bw = Files.newBufferedWriter("USER_DECK_CODES.txt".toPath());
             
             for (int i = 0; i < dlmDecks.size(); i++) {                
                 bw.write(dlmDecks.get(i).getName());
